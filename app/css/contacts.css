@@ -1,0 +1,20 @@
+[data-page=contacts-list] ul {
+  padding: 0;
+}
+
+[data-page=contacts-list] li {
+  display: inline;
+  list-style-type: none;
+}
+
+[data-page=contacts-list] .contact-list-item .edit {
+  display: none;
+}
+
+[data-page=contacts-list] .contact-list-item.edit .edit {
+  display: block;
+}
+
+[data-page=contacts-list] .contact-list-item.edit .display {
+  display: none;
+}

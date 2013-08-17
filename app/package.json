@@ -1,0 +1,22 @@
+{
+  "name": "json-contact",
+  "version": "0.0.0",
+  "description": "Sample app",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "express": "3.3.5"
+  },
+  "devDependencies": {
+    "venus": "2.1.7"
+  },
+  "scripts": {
+    "test": "node_modules/venus/bin/venus run -t test/unit -n",
+    "start": "node server.js"
+  },
+  "repository": "",
+  "author": "Seth McLaughlin",
+  "license": "BSD"
+}
