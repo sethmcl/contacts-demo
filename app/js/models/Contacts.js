@@ -12,6 +12,7 @@
       2: {id: 2, firstName: 'Santa', lastName: 'Claus', phoneNumber: '(123) 922 - 3492'}
     };
 
+    this.data.tracking = this.data.tracking || [];
     this.nextContactId = this.getNextContactId();
   }
 
@@ -76,7 +77,7 @@
    * Delete a contact
    * @param {number} id contact's id
    */
-  Contacts.prototype.deleteContact = function (id, firstName, lastName, phoneNumber) {
+  Contacts.prototype.deleteContact = function (id) {
     delete this.data.contacts[id];
 
     this.persist();

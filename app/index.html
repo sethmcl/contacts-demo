@@ -4,6 +4,7 @@
   <title>JSON Contacts</title>
   <link rel="stylesheet" type="text/css" href="css/app.css">
   <link rel="stylesheet" type="text/css" href="css/contacts.css">
+  <link rel="stylesheet" type="text/css" href="css/import-export.css">
 </head>
 <body>
   <!-- Navigation bar -->
@@ -18,9 +19,6 @@
 
   <!-- Notification area -->
   <section id="notification">user data saved</section>
-
-  <!-- View to display when user has no contacts -->
-  <section class="page" data-page="no-contacts">You have no contacts! Maybe you should <button class="add-contact">add a contact</button>...</section>
 
   <!-- Contacts list view -->
   <section class="page" data-page="contacts-list">
@@ -39,13 +37,11 @@
           <button data-action="delete">delete</button>
           </li>
           <li class="edit">
-            <form>
-              <input type="text" class="first-name" value="{firstName}" placeholder="First Name">
-              <input type="text" class="last-name" value="{lastName}" placeholder="Last Name">
-              <input type="text" class="phone-number" value="{phoneNumber}" placeholder="Phone Number">
-              <button data-action="save">save</button>
-              <button data-action="delete">delete</button>
-            </form>
+            <input type="text" class="first-name" value="{firstName}" placeholder="First Name">
+            <input type="text" class="last-name" value="{lastName}" placeholder="Last Name">
+            <input type="text" class="phone-number" value="{phoneNumber}" placeholder="Phone Number">
+            <button data-action="save">save</button>
+            <button data-action="delete">delete</button>
           </li>
         </ul>
       </li>
@@ -54,22 +50,37 @@
 
   <!-- Import / Export from / to JSON view -->
   <section class="page" data-page="import-export">
-    <h1>Import / Export</h1>
-    <form>
-      <label for="json-serialized">JSON</label>
-      <textarea name="json-serialized"></textarea>
-    </form>
+    <h1>JSON Representation of Contact List</h1>
+    You can manually modify this and then click import to import data. Note: this will completely replace all of your current contacts.
+    <p>
+      <textarea id="json-serialized"></textarea>
+      <button data-action="import">Import</button>
+    </p>
   </section>
 
   <!-- Metrics view -->
   <section class="page" data-page="metrics">
-    <h1>Metrics</h1>
+  <h1>Metrics</h1>
+    <ul class="list">
+    </ul>
+
+    <!-- Tracking event list item template -->
+    <template id="tracking-event-list-item">
+      <li class="tracking-event-list-item">
+        <ul>
+          <li class="time">{time}</li>
+          <li class="code">{code}</li>
+          <li class="value">{value}</li>
+        </ul>
+      </li>
+    </template>
   </section>
 
   <!-- These should be concatenated -->
   <script src="js/Events.js"></script>
   <script src="js/Router.js"></script>
-  <script src="js/Template.js"></script>
+  <script src="js/template.js"></script>
+  <script src="js/prettyPrint.js"></script>
   <script src="js/Application.js"></script>
   <script src="js/Model.js"></script>
   <script src="js/models/Contacts.js"></script>

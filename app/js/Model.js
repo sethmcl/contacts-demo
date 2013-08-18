@@ -66,11 +66,23 @@
   Model.prototype.persist = function () {
 
     try {
-      window.localStorage[this.localStorageKey] = JSON.stringify(this.data);
+      window.localStorage[this.localStorageKey] = this.json();
     } catch (e) {
       // unable to persist data
     }
+  };
 
+  /**
+   * Serialize to JSON
+   * @param {string} [key] model value to return. returns entire model if this argument is not provided.
+   * @returns {string} JSON representation of model
+   */
+  Model.prototype.json = function (key) {
+    if (key) {
+      return JSON.stringify(this.data[key]);
+    } else {
+      return JSON.stringify(this.data);
+    }
   };
 
 }(window.JCT || (window.JCT = {})));

@@ -1,7 +1,7 @@
 (function (namespace) {
 
   // Export to namespace
-  namespace.Template = {
+  namespace.template = {
 
     /**
      * Compile a template

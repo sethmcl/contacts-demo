@@ -39,9 +39,23 @@ nav li {
   top: 0;
   left: 50%;
   margin-left: -25%;
-  font-size: 150%;
-  padding: 5px;
+  font-size: 110%;
+  padding: .5em;
   opacity: 0;
+  text-align: center;
+
+  transition: .4s opacity;
+}
+
+#notification.error {
+  opacity: 1;
+  border: 1px solid #FF4D4D;
+  background: #BE1818;
+  color: #fff;
+}
+
+#notification.info {
+  opacity: 1;
 }
 
 .page {
@@ -55,4 +69,13 @@ nav li {
 
 template {
   display: none;
+}
+
+ul {
+  padding: 0;
+}
+
+ul li {
+  display: inline;
+  list-style-type: none;
 }

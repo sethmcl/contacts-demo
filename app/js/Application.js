@@ -12,9 +12,10 @@
    * Initialize the application
    */
   Application.prototype.init = function () {
-    this.pages  = this.initPages(document);
-    this.router = new namespace.Router();
-    this.model  = new namespace.Models.Contacts();
+    this.pages    = this.initPages(document);
+    this.router   = new namespace.Router();
+    this.model    = new namespace.Models.Contacts();
+    this.notifyEl = document.querySelector('#notification');
 
     document.addEventListener('click', this.didAnchorClick.bind(this));
 
@@ -32,7 +33,41 @@
         .addRoute('/metrics', function () {
           this.loadPage('metrics');
         }.bind(this));
+  };
 
+  /**
+   * Show notification
+   * @param {type} type the type of notification to show
+   * @param {string} message to show
+   */
+  Application.prototype.notify = function (type, message) {
+    this.notifyEl.innerHTML = message;
+
+    if (this.notificationTimeout) {
+      clearTimeout(this.notificationTimeout);
+    }
+
+    this.notificationTimeout = setTimeout(function () {
+      this.notifyEl.classList.remove(type);
+    }.bind(this), 2000);
+
+    this.notifyEl.classList.add(type);
+  };
+
+  /**
+   * Show error notification
+   * @param {string} message
+   */
+  Application.prototype.error = function (message) {
+    this.notify('error', message);
+  };
+
+  /**
+   * Show info notification
+   * @param {string} message
+   */
+  Application.prototype.info = function (message) {
+    this.notify('info', message);
   };
 
   /**
@@ -42,7 +77,7 @@
   Application.prototype.didAnchorClick = function (e) {
     var target = e.target;
 
-    if (target.tagName !== 'A' || target.getAttribute('data-local-link').toUpperCase() === 'FALSE') {
+    if (target.tagName !== 'A' || target.getAttribute('data-local-link') === 'false') {
       return;
     }
 
@@ -97,6 +132,7 @@
     }
 
     page.load();
+    this.track('page-load', pageKey);
 
     this.activePage = page;
   };
@@ -115,6 +151,17 @@
     }
 
     return new PageConstructor(el, this.model);
+  };
+
+  /**
+   * Fire user tracking event
+   * @param {string} code event code
+   * @param {string} [value] event value
+   */
+  Application.prototype.track = function (code, value) {
+    this.model.data.tracking.unshift({time: new Date().toGMTString(), code: code, value: value || ''});
+    this.model.persist();
+    this.model.fire('change:tracking');
   };
 
 
