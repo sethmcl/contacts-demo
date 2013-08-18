@@ -10,7 +10,7 @@
     "express": "3.3.5"
   },
   "devDependencies": {
-    "venus": "2.1.7"
+    "venus": "2.1.9"
   },
   "scripts": {
     "test": "node_modules/venus/bin/venus run -t test/unit -n",
