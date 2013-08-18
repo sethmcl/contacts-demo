@@ -19,7 +19,7 @@
       ['.contact-list-item input', 'keyup', this.didCommitContactEdit, this],
       ['.contact-list-item [data-action=delete]', 'click', this.didClickDeleteContact, this],
       ['.contact-list-item [data-action=edit]', 'click', this.didClickEditContact, this],
-      ['.contact-list-item [data-action=save]', 'click', this.didClickSaveContact, this],
+      ['.contact-list-item [data-action=save]', 'click', this.didClickSaveContact, this]
     ];
 
     this.model.on('change', this.render, this);

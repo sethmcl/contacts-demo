@@ -9,10 +9,9 @@
 <body>
   <!-- Navigation bar -->
   <nav>
-    <h1>contacts</h1>
     <ul>
-      <li><a href="contacts-list" data-type="nav-link" class="selected">Contact list</a></li>
-      <li><a href="import-export" data-type="nav-link">Import Export</a></li>
+      <li><a href="contacts-list" class="selected">Contact list</a></li>
+      <li><a href="import-export" class="import-export">Import Export</a></li>
       <li><a href="metrics" data-type="nav-link">Metrics</a></li>
     </ul>
   </nav>
@@ -22,15 +21,15 @@
 
   <!-- Contacts list view -->
   <section class="page" data-page="contacts-list">
-    <h1>Contacts</h1>
-    <button data-action="add-contact">Add new contact</button>
+    <button data-action="add-contact" class="primary">new contact</button>
     <ul class="list">
     </ul>
 
     <!-- Contact list item template -->
     <template id="contact-list-item">
       <li class="contact-list-item" data-id="{id}">
-        <ul>
+      <ul>
+          <li class="avatar">{firstName} {lastName}'s avatar</li>
           <li class="display">
           {firstName} {lastName} <a href="tel:{phoneNumber}" data-local-link="false">{phoneNumber}</a>
           <button data-action="edit">edit</button>
@@ -54,7 +53,7 @@
     You can manually modify this and then click import to import data. Note: this will completely replace all of your current contacts.
     <p>
       <textarea id="json-serialized"></textarea>
-      <button data-action="import">Import</button>
+      <button data-action="import" class="primary">Import</button>
     </p>
   </section>
 
@@ -79,7 +78,7 @@
   <!-- These should be concatenated -->
   <script src="js/Events.js"></script>
   <script src="js/Router.js"></script>
-  <script src="js/template.js"></script>
+  <script src="js/Template.js"></script>
   <script src="js/prettyPrint.js"></script>
   <script src="js/Application.js"></script>
   <script src="js/Model.js"></script>

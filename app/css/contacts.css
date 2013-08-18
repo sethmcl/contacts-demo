@@ -7,14 +7,64 @@
   list-style-type: none;
 }
 
+[data-page=contacts-list] .contact-list-item {
+  display: block;
+  padding: 20px;
+  margin: 0 -20px 0 -20px;
+  background: rgba(0, 0, 0, 0.65);
+  border-top: 1px solid #3f3f3f;
+  color: #fff;
+}
+
 [data-page=contacts-list] .contact-list-item .edit {
   display: none;
 }
 
+[data-page=contacts-list] .contact-list-item .edit input {
+  font-size: 80%;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid #535657;
+  padding: 1px;
+  color: #fff;
+}
+
+[data-page=contacts-list] .contact-list-item .edit input:focus {
+  outline: 1px solid #41B83C;
+  background: #fff;
+  color: #666;
+}
+
+[data-page=contacts-list] .contact-list-item a {
+  color: #C4BE35;
+  text-decoration: none;
+}
+
+[data-page=contacts-list] input.first-name {
+  width: 6em;
+}
+
+[data-page=contacts-list] input.last-name {
+  width: 7em;
+}
+
+[data-page=contacts-list] input.phone-number {
+  width: 9em;
+}
+
 [data-page=contacts-list] .contact-list-item.edit .edit {
-  display: block;
+  display: inline-block;
 }
 
 [data-page=contacts-list] .contact-list-item.edit .display {
   display: none;
+  marign-top: 5px;
+}
+
+[data-page=contacts-list] .contact-list-item .avatar {
+  display: inline-block;
+  width: 43px;
+  height: 33px;
+  background-image: url('../img/sprites.png');
+  background-position: -37px -258px;
+  text-indent: -99999px;
 }

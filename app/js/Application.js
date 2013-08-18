@@ -12,10 +12,11 @@
    * Initialize the application
    */
   Application.prototype.init = function () {
-    this.pages    = this.initPages(document);
-    this.router   = new namespace.Router();
-    this.model    = new namespace.Models.Contacts();
-    this.notifyEl = document.querySelector('#notification');
+    this.pages       = this.initPages(document);
+    this.router      = new namespace.Router();
+    this.model       = new namespace.Models.Contacts();
+    this.notifyEl    = document.querySelector('#notification');
+    this.navLinksEls = Array.prototype.slice.call(document.querySelectorAll('nav a'), 0);
 
     document.addEventListener('click', this.didAnchorClick.bind(this));
 
@@ -130,6 +131,15 @@
     if (page instanceof HTMLElement) {
       this.pages[pageKey] = page = this.instantiatePage(pageKey, page);
     }
+
+    // Update nav bar
+    this.navLinksEls.forEach(function (a) {
+      if (a.href.indexOf(pageKey) !== -1) {
+        a.classList.add('selected');
+      } else {
+        a.classList.remove('selected');
+      }
+    });
 
     page.load();
     this.track('page-load', pageKey);
