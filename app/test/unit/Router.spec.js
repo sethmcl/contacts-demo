@@ -48,12 +48,13 @@ describe('Router', function () {
     it('should call correct handler on navigation', function (done) {
       var routeHandler = sinon.spy();
       router.addRoute('/home', routeHandler);
+      router.addRoute('/about', sinon.spy());
       router.setUrl('/home');
       router.setUrl('/about');
       history.back();
 
       setTimeout(function () {
-        expect(routeHandler.callCount).to.be(1);
+        expect(routeHandler.callCount).to.be(2);
         done();
       }, 100);
     });

@@ -9,6 +9,14 @@ describe('Application', function () {
 
   beforeEach(function () {
     app = new JCT.Application();
+    app.navLinksEls = [];
+    app.model = {
+      data: {
+        tracking: []
+      },
+      persist: function () {},
+      fire: function () {}
+    }
   });
 
   describe('initPages', function () {
